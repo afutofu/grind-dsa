@@ -3,7 +3,7 @@ class Solution:
         numMap = {}
         n = len(nums)
 
-        # Populate hash table
+        # Populate map
         for i in range(n):
             numMap[nums[i]] = i  # Populate map with elements and their indices
 

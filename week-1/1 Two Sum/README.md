@@ -1,6 +1,6 @@
 # Two Sum
 
-DS: Map
+DS: Map/Dictionary
 
 - Iterate over nums array and store key value pairs of elements and their indices
 - Iterate over nums again and this time find the complement of the value at the time of the loop. complement = target - nums[i]
