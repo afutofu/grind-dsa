@@ -36,14 +36,13 @@ def bfs(graph, start):
 
 if __name__ == "__main__":
     graph = {
-        0: [1, 2],
-        1: [0, 3, 4],
-        2: [0, 5],
-        3: [1],
-        4: [1, 5],
-        5: [2, 4],
+        1: [2, 3, 4],
+        2: [2, 3],
+        3: [5],
+        4: [3, 5],
+        5: [2],
     }
 
     print("BFS traversal:")
-    bfs(graph, 0)
+    bfs(graph, 1)
     print()
