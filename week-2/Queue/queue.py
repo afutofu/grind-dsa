@@ -45,6 +45,9 @@ class Queue:
 
         return res + "None"
 
+    def is_empty(self) -> bool:
+        return self.size == 0
+
 
 if __name__ == "__main__":
     q = Queue()
