@@ -26,6 +26,19 @@ def dfs(graph, start):
                 found.append(neighbor)
 
 
+seen = set()
+done = set()
+
+
+def dfs_recursion(graph, curr):
+    seen.add(curr)
+    print(curr, end=" ")
+    for neighbor in graph[curr]:
+        if neighbor not in seen:
+            dfs_recursion(graph, neighbor)
+    done.add(curr)
+
+
 if __name__ == "__main__":
     graph = {
         1: [2, 3, 4],
@@ -38,3 +51,4 @@ if __name__ == "__main__":
     print("DFS traversal:")
     dfs(graph, 1)
     print()
+    dfs_recursion(graph, 1)
