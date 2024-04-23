@@ -13,6 +13,9 @@ class Item:
     def __lt__(self, other) -> bool:
         return self.priority < other.priority
 
+    def __gt__(self, other) -> bool:
+        return self.priority > other.priority
+
     def __eq__(self, other) -> bool:
         return self.priority == other.priority
 
@@ -49,7 +52,7 @@ class PriorityQueue:
 
         # Percolate up the element to its correct position
         self.percolate_up(self.size - 1)
-        print(self.heap)
+        print(f"Insert ({priority}, {value})\nHeap is now: {self.heap}\n")
 
     def delete_min(self) -> Item:
         if self.size == 0:
@@ -71,7 +74,7 @@ class PriorityQueue:
         return min
 
     def percolate_up(self, index: int) -> None:
-        parent = (index - 1) // 2 - 1
+        parent = (index + 1) // 2 - 1
 
         # Swap the parent and the child if the parent is greater than the child
         if parent >= 0 and self.heap[parent] > self.heap[index]:
@@ -111,6 +114,7 @@ class PriorityQueue:
 
         # Percolate up the element to its correct position
         self.percolate_up(index)
+        print(f"Decreased key of {value} to {new_priority}\nHeap is now: {self.heap}\n")
 
     def is_empty(self) -> bool:
         return self.size == 0
