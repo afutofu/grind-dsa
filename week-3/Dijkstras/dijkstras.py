@@ -13,8 +13,9 @@ def dijksras(graph, start, end):
     while not pq.is_empty():
         current = pq.delete_min()
         done[current.value] = True
-        print(current.value, end=" ")
+        print(current.value)
 
+        # Update the distances of the neighbors of the current node
         for neighbor, weight in graph[current.value]:
             if not done[neighbor]:
                 new_weight = distances[current.value] + weight
@@ -23,7 +24,9 @@ def dijksras(graph, start, end):
                 if distances[neighbor] == float("inf"):
                     pq.insert(new_weight, neighbor)
 
-                # If the new weight is less than the current weight, update the weight
+                # If the new weight is less than the current weight, update the weight of the neighbor
+                # and decrease the key of the neighbor in the priority queue
+                # In the case of a never before seen neighbor, the new weight will be less than infinity
                 if new_weight < distances[neighbor]:
                     distances[neighbor] = new_weight
                     pq.decrease_key(new_weight, neighbor)
