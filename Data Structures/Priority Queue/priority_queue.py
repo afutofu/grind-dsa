@@ -1,6 +1,10 @@
 # Priority Queue implementation using a heap data structure
 class PriorityQueue:
     # 0-indexed min heap
+    # Parent: (i + 1) // 2 - 1
+    # Left child: 2 (i + 1) - 1
+    # Right child: 2 (i + 1)
+    # Leaves: last n // 2 elements
     heap: list = []
     size: int = 0
 
@@ -13,6 +17,7 @@ class PriorityQueue:
 
     def build_heap(self) -> None:
         # Build starting first ignoring the leaf nodes
+        # Percolate down the nodes starting from the last non-leaf node
         for i in range(len(self.heap) // 2, -1, -1):
             self.percolate_down(i)
 
