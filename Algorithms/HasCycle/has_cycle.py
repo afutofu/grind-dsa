@@ -5,13 +5,16 @@ done = set()
 def has_cycle(graph, curr):
     print(curr, end=" ")
     seen.add(curr)
+    cycleFound = False
     for neighbor in graph[curr]:
-        if neighbor not in seen:
-            has_cycle(graph, neighbor)
-        elif neighbor not in done:
+        if neighbor in seen and neighbor not in done:
             print("Cycle detected!")
-            exit(0)
+            cycleFound = True
+        if neighbor not in seen and not cycleFound:
+            cycleFound = has_cycle(graph, neighbor)
+
     done.add(curr)
+    return cycleFound
 
 
 if __name__ == "__main__":
