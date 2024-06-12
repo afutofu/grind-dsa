@@ -43,24 +43,27 @@ class PriorityQueue:
         return min
 
     def percolate_up(self, index: int) -> None:
-        parent = (index - 1) // 2 - 1
+        parentIdx = (index - 1) // 2 - 1
 
         # Swap the parent and the child if the parent is greater than the child
-        if parent >= 0 and self.heap[parent] > self.heap[index]:
-            self.heap[parent], self.heap[index] = self.heap[index], self.heap[parent]
-            self.percolate_up(parent)
+        if parentIdx >= 0 and self.heap[parentIdx] > self.heap[index]:
+            self.heap[parentIdx], self.heap[index] = (
+                self.heap[index],
+                self.heap[parentIdx],
+            )
+            self.percolate_up(parentIdx)
 
     def percolate_down(self, index: int) -> None:
-        left = 2 * (index + 1) - 1
-        right = 2 * (index + 1)
+        leftChildIdx = 2 * (index + 1) - 1
+        rightChildIdx = 2 * (index + 1)
 
         smallest = index
 
         # Find the smallest element among the parent and its children
-        if left < self.size and self.heap[left] < self.heap[index]:
-            smallest = left
-        if right < self.size and self.heap[right] < self.heap[smallest]:
-            smallest = right
+        if leftChildIdx < self.size and self.heap[leftChildIdx] < self.heap[index]:
+            smallest = leftChildIdx
+        if rightChildIdx < self.size and self.heap[rightChildIdx] < self.heap[smallest]:
+            smallest = rightChildIdx
 
         # Swap the parent with the smallest child if either child is smaller than the parent
         if smallest != index:
