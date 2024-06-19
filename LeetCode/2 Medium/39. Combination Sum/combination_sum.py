@@ -1,17 +1,17 @@
 class Solution:
     def combinationSum(self, candidates, target):
-        memo = []
-        self.dfs(candidates, target, [], memo)
-        return memo
+        res = []
+        self.dfs(candidates, target, [], res)
+        return res
 
-    def dfs(self, nums, target, path, memo):
+    def dfs(self, nums, target, path, res):
         if target < 0:
             return
         if target == 0:
-            memo.append(path)
+            res.append(path)
             return
         for i in range(len(nums)):
-            self.dfs(nums[i:], target - nums[i], path + [nums[i]], memo)
+            self.dfs(nums[i:], target - nums[i], path + [nums[i]], res)
 
 
 if __name__ == "__main__":
